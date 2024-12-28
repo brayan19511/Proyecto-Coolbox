@@ -18,8 +18,13 @@ const sideBarData = [
     iconOpen: <RiIcons.RiArrowUpSFill />,
     subNav: [
       {
-        title: 'facturacion',
-        path: '/administracion/facturacion',
+        title: 'Facturacion',
+        path: '/administracion/facturas',
+        icon: <MdIcons.MdSell />,
+      },
+      {
+        title: 'Cuentas x Cobrar',
+        path: '/administracion/cxc',
         icon: <MdIcons.MdSell />,
       }
     ]
@@ -75,7 +80,7 @@ export default function Sidebar() {
           </Link>
           {
             sideBarData.map((item, index) => {
-              return <SubMenu item={item} key={index} />
+              return <SubMenu item={item} showSideBar={showSideBar} key={index} />
             })
           }
         </div>
@@ -85,7 +90,7 @@ export default function Sidebar() {
 }
 
 
-const SubMenu = ({ item }) => {
+const SubMenu = ({ item ,showSideBar}) => {
   const [subNav, setSubNav] = useState(false)
   const showSubNav = () => setSubNav(!subNav)
   return (
@@ -108,8 +113,8 @@ const SubMenu = ({ item }) => {
       {
         subNav && item.subNav.map((item, index) => {
           return (
-            <Link className='dropdown' to={item.path} key={index}>
-              {item.icon}
+            <Link className='dropdown' to={item.path} key={index} onClick={showSideBar} > 
+              {/* {item.icon} */}
               <div className="sidebarlabel">
                 {item.title}
               </div>

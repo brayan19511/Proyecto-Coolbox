@@ -1,0 +1,12 @@
+.CuentasCobrar{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-self: flex-end;
+    align-items: center;
+}
+.cxcPowerBi{
+    width: 900px;
+    height: 600px;
+}
