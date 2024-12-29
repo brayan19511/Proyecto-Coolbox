@@ -1,13 +1,14 @@
 
-import { Link } from 'react-router'
 import { useState } from 'react'
+import { useDispatch } from 'react-redux'
+import { logout } from '../../store/slices/auth/authSlice'
+import { Link } from 'react-router'
 import * as FaIcons from 'react-icons/fa'
 import * as AiIcons from 'react-icons/ai'
 import * as MdIcons from "react-icons/md";
 import * as RiIcons from 'react-icons/ri'
 import * as HiIcons from "react-icons/hi";
 // import { BiLineChart } from "react-icons/bi"; reprot analsiis
-
 
 const sideBarData = [
   {
@@ -67,6 +68,7 @@ export default function Sidebar() {
 
   const [sidebar, setSidebar] = useState(false)
   const showSideBar = () => setSidebar(!sidebar)
+  const dispatch=useDispatch()
 
   return (
     <div className="sidebar">
@@ -85,6 +87,7 @@ export default function Sidebar() {
           }
         </div>
       </div>
+      <button className='btn-logOut' onClick={()=>dispatch(logout())}>{<HiIcons.HiOutlineLogout /> }</button>
     </div>
   )
 }
@@ -125,3 +128,5 @@ const SubMenu = ({ item ,showSideBar}) => {
     </>
   )
 }
+
+
